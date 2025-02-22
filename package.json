@@ -12,22 +12,22 @@
     "prepare": "npm run build"
   },
   "peerDependencies": {
+    "next": ">=15.0.0",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0",
     "styled-components": ">=6.0.0",
-    "next": ">=15.0.0",
     "zustand": ">=5.0.0"
   },
   "devDependencies": {
-    "next": "15.1.7",
-    "zustand": "5.0.3",
     "@types/react": "^19.0.8",
     "@types/styled-components": "^5.1.34",
+    "next": "15.1.7",
     "tsup": "^8.3.6",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "zustand": "5.0.3"
   },
   "dependencies": {
+    "polished": "^4.3.1",
     "react-icons": "^5.4.0"
   }
 }
-

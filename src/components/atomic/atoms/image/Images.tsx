@@ -7,8 +7,8 @@ const StyleImage = styled(Image)<{
   $isRounded?: boolean;
   $borderRadius?: string;
 }>`
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
   /* Para que la imagen se recorte/ajuste sin deformarse */
   overflow: hidden;

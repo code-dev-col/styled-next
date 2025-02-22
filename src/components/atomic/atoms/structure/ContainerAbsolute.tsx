@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
-export interface ContainerRelativeProps {
+export interface ContainerAbsoluteProps {
   $bottom?: string;
   $top?: string;
   $right?: string;
@@ -14,6 +14,8 @@ export interface ContainerRelativeProps {
   $margin?: string;
   $borderRadius?: string;
   $borderColor?: string;
+  $inset?: string;
+  // Propiedades adicionales
   $overflow?: string;
   $boxShadow?: string;
   $cursor?: string;
@@ -22,12 +24,13 @@ export interface ContainerRelativeProps {
   $transform?: string;
 }
 
-const ContainerRelative = styled.div<ContainerRelativeProps>`
-  position: relative;
+const ContainerAbsolute = styled.div<ContainerAbsoluteProps>`
+  position: absolute;
   bottom: ${({ $bottom }) => $bottom || 'auto'};
   top: ${({ $top }) => $top || 'auto'};
   right: ${({ $right }) => $right || 'auto'};
   left: ${({ $left }) => $left || 'auto'};
+  inset: ${({ $inset }) => $inset || 'auto'};
   z-index: ${({ $zIndex }) => $zIndex || 0};
   width: ${({ $width }) => $width || 'auto'};
   height: ${({ $height }) => $height || 'auto'};
@@ -37,12 +40,6 @@ const ContainerRelative = styled.div<ContainerRelativeProps>`
   border: 2px solid
     ${({ $borderColor, theme }) =>
       $borderColor ? theme.colors[$borderColor] : 'transparent'};
-  overflow: ${({ $overflow }) => $overflow || 'visible'};
-  box-shadow: ${({ $boxShadow }) => $boxShadow || 'none'};
-  cursor: ${({ $cursor }) => $cursor || 'default'};
-  opacity: ${({ $opacity }) => ($opacity !== undefined ? $opacity : 1)};
-  display: ${({ $display }) => $display || 'block'};
-  transform: ${({ $transform }) => $transform || 'none'};
 
   background: ${({ $backgroundColor, theme }) => {
     if ($backgroundColor) {
@@ -51,7 +48,14 @@ const ContainerRelative = styled.div<ContainerRelativeProps>`
     }
     return 'transparent';
   }};
+
+  overflow: ${({ $overflow }) => $overflow || 'visible'};
+  box-shadow: ${({ $boxShadow }) => $boxShadow || 'none'};
+  cursor: ${({ $cursor }) => $cursor || 'default'};
+  opacity: ${({ $opacity }) => ($opacity !== undefined ? $opacity : 1)};
+  display: ${({ $display }) => $display || 'block'};
+  transform: ${({ $transform }) => $transform || 'none'};
 `;
 
-export default ContainerRelative;
+export default ContainerAbsolute;
 

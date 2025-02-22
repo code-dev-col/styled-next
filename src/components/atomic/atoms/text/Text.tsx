@@ -9,7 +9,7 @@ const Text = styled.p<{
 }>`
   line-height: 1.9rem;
   font-weight: 500;
-  font-size: clamp(1rem, 1.25vw, 1.4rem);
+  font-size: clamp(1rem, calc(1vw + 0.3rem), 1.5rem);
   letter-spacing: -0.02rem;
   margin: ${(props) => props.$margin ?? '0 0 0.8rem 0'};
   padding: ${(props) => props.$padding ?? '0'};
@@ -19,3 +19,4 @@ const Text = styled.p<{
 `;
 
 export default Text;
+

@@ -3,10 +3,10 @@
 
 import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import { lighten } from 'polished'; // Importamos lighten (podrías usar darken si prefieres)
 import DynamicIcon from '../../atoms/icon/DynamicIcon';
 import { ButtonProps, Size } from '../../interfaces/interfaces-styled';
 
-// Mapeo para estilos según tamaño
 const buttonSizeStyles: {
   [key in Size]: { fontSize: string; padding: string; borderRadius: string };
 } = {
@@ -30,10 +30,8 @@ const bounceAnimation = keyframes`
 export const ButtonStyle = css<ButtonProps>`
   border: ${({ $border, theme }) =>
     $border ? `3px solid ${theme.colors.text}` : 'none'};
-  /* Si se pasa un padding personalizado, se usa; de lo contrario se usa el del tamaño definido */
   padding: ${({ $padding, $size }) =>
     $padding || buttonSizeStyles[$size].padding};
-  /* Si no se indica que el botón sea redondeado, se usa el border-radius por defecto del tamaño */
   border-radius: ${({ $rounded, $size }) =>
     $rounded ? 'inherit' : buttonSizeStyles[$size].borderRadius};
   cursor: pointer;
@@ -54,29 +52,44 @@ export const ButtonStyle = css<ButtonProps>`
 
   margin: ${({ $margin }) => $margin || '0'};
 
-  /* Usamos el tema para colores: $color para el texto y $background para el fondo */
+  /* Usamos el tema para el color de texto */
   color: ${({ $color, theme }) => theme.colors[$color] || $color};
-  background-color: ${({ $background, theme }) =>
-    theme.colors[$background] || $background};
 
-  /* Si se indica outline, se hace transparente el fondo y se coloca un borde del color de fondo */
+  /* Tomamos el color base del tema o el que haya pasado el usuario */
+  ${({ $background, theme }) => {
+    const baseColor = theme.colors[$background] || $background;
+    // Podemos verificar si baseColor es un color válido
+    // Polished puede trabajar con '#FFF', 'rgb(255,255,255)', etc.
+    // Generaremos un degradado lineal con un tono más claro a la izquierda y el color base a la derecha
+    return css`
+      background: linear-gradient(
+        to right,
+        ${lighten(0.15, baseColor)},
+        ${baseColor}
+      );
+    `;
+  }}
+
+  /* Outline */
   ${({ $outline, $background, theme }) =>
     $outline &&
     css`
-      background-color: transparent;
-      border: solid 2px ${theme.colors[$background] || $background};
+      background: transparent;
+      border: 2px solid ${theme.colors[$background] || $background};
       color: ${theme.colors[$background] || $background};
     `}
 
+  /* Disabled */
   ${({ $disabled, theme }) =>
     $disabled &&
     css`
-      background-color: ${theme.colors.background};
+      background: ${theme.colors.background};
       color: ${theme.colors.textSoft};
       border-color: ${theme.colors.textSoft};
       cursor: not-allowed;
     `}
 
+  /* Animación */
   ${({ $animated }) =>
     $animated &&
     css`

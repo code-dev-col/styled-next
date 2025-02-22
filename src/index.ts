@@ -45,8 +45,9 @@ export { default as UnorderedList } from './components/atomic/atoms/list/Unorder
 export { default as Center } from './components/atomic/atoms/structure/Center';
 export { default as ContainerFlex } from './components/atomic/atoms/structure/ContainerFlex';
 export { default as ContainerRelative } from './components/atomic/atoms/structure/ContainerRelative';
+export { default as ContainerAbsolute } from './components/atomic/atoms/structure/ContainerAbsolute';
 export { default as Grid } from './components/atomic/atoms/structure/Grid';
-export { default as Section } from './components/atomic/atoms/structure/Section';
+export { default as Container } from './components/atomic/atoms/structure/Container';
 export { default as ThreeColumns } from './components/atomic/atoms/structure/ThreeColumns';
 export { default as TwoColumns } from './components/atomic/atoms/structure/TwoColumns';
 
@@ -61,3 +62,7 @@ export { default as Abbr } from './components/atomic/SEO/abbr/Abbr';
 /* hooks */
 export { default as useScroll } from './hooks/useScroll';
 export { default as useWidth } from './hooks/useWidth';
+
+/* performance */
+export { default as MemoWrapper } from './components/atomic/atoms/performance/MemoWrapper';
+export { default as LazyLoad } from './components/atomic/molecules/perfomance/LazyLoad';

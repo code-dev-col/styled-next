@@ -12,12 +12,12 @@ const Grid = styled.div<GridProps>`
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
-  justify-content: center;
+  justify-content: center; /* Centra el grupo de columnas en el contenedor */
+  align-items: start; /* Alinea en la parte superior en el eje y */
   max-width: ${({ $maxGridWidth = '1200px' }) => $maxGridWidth};
-  margin: 0 auto;
 
-  /* Para pantallas con ancho mayor o igual a 650px, aplica este layout */
-  @media screen and (width >= 650px) {
+  /* Para pantallas con ancho mayor o igual a 672px, aplica este layout */
+  @media screen and (width >= 42rem) {
     grid-template-columns: repeat(auto-fit, minmax(min(230px, 80%), 0.9fr));
   }
   z-index: 1;
