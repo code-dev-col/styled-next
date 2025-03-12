@@ -19,7 +19,7 @@ const StyledSelect = styled.select<{ $require?: boolean }>`
   box-sizing: border-box;
   font-size: 1.3rem;
   font-family: inherit;
-  font-weight: 900;
+  font-weight: 700;
   color: ${(props) => props.theme.colors.text};
   background-color: ${(props) => props.theme.colors.backgroundBase};
 

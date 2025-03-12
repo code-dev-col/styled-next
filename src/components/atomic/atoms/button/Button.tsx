@@ -36,7 +36,7 @@ export const ButtonStyle = css<ButtonProps>`
     $rounded ? 'inherit' : buttonSizeStyles[$size].borderRadius};
   cursor: pointer;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   font-family: inherit;
   display: flex;
   align-items: center;

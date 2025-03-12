@@ -36,7 +36,7 @@ const MarqueeText = styled.div<MarqueeTextProps>`
   white-space: nowrap;
   display: inline-block;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
   filter: drop-shadow(
     -1px 1px 2px ${({ theme }) => theme.colors.backgroundBase}

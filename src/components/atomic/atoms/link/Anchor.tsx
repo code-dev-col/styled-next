@@ -14,7 +14,7 @@ const StyledAnchor = styled(Link)<AnchorProps>`
   text-decoration: none;
   font-size: ${({ $fontSize }) => $fontSize || 'clamp(1rem, 1.25vw, 1.4rem)'};
   color: ${({ $color, theme }) => theme.colors[$color || 'inherit']};
-  font-weight: ${({ $fontWeight }) => $fontWeight || 'normal'};
+  font-weight: ${({ $fontWeight }) => $fontWeight || '400'};
   cursor: pointer;
 `;
 
