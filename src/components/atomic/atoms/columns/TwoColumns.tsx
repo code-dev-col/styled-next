@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Grid from './Grid';
+import Grid from '../grid/Grid';
 
 interface TwoColumnsProps {
   children: React.ReactNode[];
@@ -39,7 +39,7 @@ const TwoColumnsGrid = styled(Grid)<{
     `}
 
   /* Para pantallas pequeñas, cambia a layout en columna */
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 41.99rem) {
     display: flex;
 
     flex-direction: ${({ $reverse }) =>

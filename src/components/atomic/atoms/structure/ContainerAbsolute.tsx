@@ -1,7 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
 export interface ContainerAbsoluteProps {
+  children?: React.ReactNode;
   $bottom?: string;
   $top?: string;
   $right?: string;
@@ -15,7 +17,7 @@ export interface ContainerAbsoluteProps {
   $borderRadius?: string;
   $borderColor?: string;
   $inset?: string;
-  // Propiedades adicionales
+  // Propiedades adicionales para mayor control:
   $overflow?: string;
   $boxShadow?: string;
   $cursor?: string;
@@ -24,7 +26,7 @@ export interface ContainerAbsoluteProps {
   $transform?: string;
 }
 
-const ContainerAbsolute = styled.div<ContainerAbsoluteProps>`
+const StyledContainerAbsolute = styled.div<ContainerAbsoluteProps>`
   position: absolute;
   bottom: ${({ $bottom }) => $bottom || 'auto'};
   top: ${({ $top }) => $top || 'auto'};
@@ -56,6 +58,15 @@ const ContainerAbsolute = styled.div<ContainerAbsoluteProps>`
   display: ${({ $display }) => $display || 'block'};
   transform: ${({ $transform }) => $transform || 'none'};
 `;
+
+const ContainerAbsolute: React.FC<ContainerAbsoluteProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <StyledContainerAbsolute {...props}>{children}</StyledContainerAbsolute>
+  );
+};
 
 export default ContainerAbsolute;
 

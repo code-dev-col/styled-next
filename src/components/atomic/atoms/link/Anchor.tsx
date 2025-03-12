@@ -1,20 +1,26 @@
+import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-/**
- * * Estilo general para enlaces
- */
-const Anchor = styled(Link)<{
+export interface AnchorProps
+  extends React.ComponentPropsWithoutRef<typeof Link> {
+  children?: React.ReactNode;
   $color?: string;
   $fontSize?: string;
   $fontWeight?: string;
-}>`
+}
+
+const StyledAnchor = styled(Link)<AnchorProps>`
   text-decoration: none;
-  font-size: ${(props) => props.$fontSize || `clamp(1rem, 1.25vw, 1.4rem)`};
-  color: ${(props) => props.theme.colors[props.$color || 'text']};
-  font-weight: ${(props) => props.$fontWeight || 'normal'};
+  font-size: ${({ $fontSize }) => $fontSize || 'clamp(1rem, 1.25vw, 1.4rem)'};
+  color: ${({ $color, theme }) => theme.colors[$color || 'inherit']};
+  font-weight: ${({ $fontWeight }) => $fontWeight || 'normal'};
   cursor: pointer;
 `;
+
+const Anchor: React.FC<AnchorProps> = ({ children, ...props }) => {
+  return <StyledAnchor {...props}>{children}</StyledAnchor>;
+};
 
 export default Anchor;
 

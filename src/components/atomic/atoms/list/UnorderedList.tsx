@@ -1,10 +1,14 @@
+import React from 'react';
 import styled from 'styled-components';
 
-/**
- * * Estilo general para listas desordenadas
- */
-const UnorderedList = styled.ul<{ $margin?: string; $marker?: string }>`
-  margin: ${(props) => (props.$margin ? props.$margin : '1rem 0 0 0')};
+export interface UnorderedListProps {
+  children?: React.ReactNode;
+  $margin?: string;
+  $marker?: string;
+}
+
+const StyledUnorderedList = styled.ul<UnorderedListProps>`
+  margin: ${({ $margin }) => $margin || '1rem 0 0 0'};
 
   li {
     padding-left: 1rem;
@@ -12,8 +16,16 @@ const UnorderedList = styled.ul<{ $margin?: string; $marker?: string }>`
   }
 
   li::marker {
-    content: ${(props) => (props.$marker ? `'${props.$marker}'` : 'none')};
+    content: ${({ $marker }) => ($marker ? `'${$marker}'` : 'none')};
   }
 `;
 
+const UnorderedList: React.FC<UnorderedListProps> = ({
+  children,
+  ...props
+}) => {
+  return <StyledUnorderedList {...props}>{children}</StyledUnorderedList>;
+};
+
 export default UnorderedList;
+

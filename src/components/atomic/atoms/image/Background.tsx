@@ -1,7 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
+import { lighten } from 'polished';
 
-interface StyledSBackgroundProps {
+export interface StyledSBackgroundProps {
   $height?: string;
   $backgroundColor?: string;
   $borderRadius?: string;
@@ -11,27 +11,28 @@ interface StyledSBackgroundProps {
   $parallax?: boolean;
   $blur?: string;
   $padding?: string;
+  // Propiedades para controlar la imagen de fondo con opciones fijas
+  $backgroundSize?: 'contain' | 'cover' | 'auto';
+  $backgroundPosition?:
+    | 'center'
+    | 'top left'
+    | 'top right'
+    | 'bottom left'
+    | 'bottom right'
+    | string;
 }
 
 const StyledBackground = styled.div<StyledSBackgroundProps>`
   position: relative;
-  z-index: 0; /* Para que los pseudo-elementos queden por debajo si ponemos z-index: -1 en ellos. */
-
-  /* Opcional: si tu contenido se pasa del contenedor, puedes necesitar overflow: hidden */
-  /* overflow: hidden; */
-
+  z-index: 0;
   width: 100%;
-  height: ${(props) => props.$height || 'auto'};
-  border-radius: ${(props) => props.$borderRadius || '0'};
-  background-color: ${(props) => props.$backgroundColor || 'transparent'};
-  color: ${(props) => props.$color || 'inherit'};
-  text-align: ${(props) => props.$textAlign || 'left'};
-
-  /* Quitamos el filter en el contenedor,
-     ya que lo aplicaremos al pseudo-elemento con la imagen. */
-
-  /* El padding puedes manejarlo dentro o fuera, según necesites */
-  padding: ${(props) => props.$padding || '0'};
+  height: ${({ $height }) => $height || 'auto'};
+  border-radius: ${({ $borderRadius }) => $borderRadius || '0'};
+  background-color: ${({ $backgroundColor }) =>
+    $backgroundColor || 'transparent'};
+  color: ${({ $color }) => $color || 'inherit'};
+  text-align: ${({ $textAlign }) => $textAlign || 'left'};
+  padding: ${({ $padding }) => $padding || '0'};
 
   &::after {
     content: '';
@@ -40,11 +41,10 @@ const StyledBackground = styled.div<StyledSBackgroundProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${(props) => props.theme.colors.textLightTransparent};
+    background-color: ${({ theme }) => theme.colors.textLightTransparent};
     z-index: -1;
   }
 
-  /* Usamos un pseudo-elemento para la imagen de fondo con blur */
   &::before {
     content: '';
     position: absolute;
@@ -52,23 +52,16 @@ const StyledBackground = styled.div<StyledSBackgroundProps>`
     left: 0;
     width: 100%;
     height: 100%;
-
-    /* La imagen de fondo va aquí */
-    background-image: ${(props) =>
-      props.$backgroundImage ? `url(${props.$backgroundImage})` : 'none'};
-    background-position: top left;
-    background-size: cover;
+    background-image: ${({ $backgroundImage }) =>
+      $backgroundImage ? `url(${$backgroundImage})` : 'none'};
+    background-position: ${({ $backgroundPosition }) =>
+      $backgroundPosition || 'top left'};
+    background-size: ${({ $backgroundSize }) => $backgroundSize || 'contain'};
     background-repeat: no-repeat;
-
-    /* Parallax usando background-attachment: */
-    background-attachment: ${(props) => (props.$parallax ? 'fixed' : 'scroll')};
-
-    /* Aquí aplicamos el blur */
-    filter: ${(props) => (props.$blur ? `blur(${props.$blur})` : 'none')};
-
-    /* Para “colocar” este pseudo-elemento detrás del contenido */
+    background-attachment: ${({ $parallax }) =>
+      $parallax ? 'fixed' : 'scroll'};
+    filter: ${({ $blur }) => ($blur ? `blur(${$blur})` : 'none')};
     z-index: -1;
-    /* Si tu padre no tiene altura fija, la imagen quedará del alto contenido */
   }
 `;
 
@@ -86,6 +79,8 @@ const Background: React.FC<BackgroundProps> = ({
   $parallax,
   $blur,
   $padding,
+  $backgroundSize,
+  $backgroundPosition,
   children,
 }) => {
   return (
@@ -97,8 +92,10 @@ const Background: React.FC<BackgroundProps> = ({
       $textAlign={$textAlign}
       $backgroundImage={$backgroundImage}
       $parallax={$parallax}
+      $blur={$blur}
       $padding={$padding}
-      $blur={$blur}>
+      $backgroundSize={$backgroundSize}
+      $backgroundPosition={$backgroundPosition}>
       {children}
     </StyledBackground>
   );

@@ -1,7 +1,9 @@
+import React from 'react';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 
 export interface ContainerRelativeProps {
+  children?: React.ReactNode;
   $bottom?: string;
   $top?: string;
   $right?: string;
@@ -22,7 +24,7 @@ export interface ContainerRelativeProps {
   $transform?: string;
 }
 
-const ContainerRelative = styled.div<ContainerRelativeProps>`
+const StyledContainerRelative = styled.div<ContainerRelativeProps>`
   position: relative;
   bottom: ${({ $bottom }) => $bottom || 'auto'};
   top: ${({ $top }) => $top || 'auto'};
@@ -52,6 +54,15 @@ const ContainerRelative = styled.div<ContainerRelativeProps>`
     return 'transparent';
   }};
 `;
+
+const ContainerRelative: React.FC<ContainerRelativeProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <StyledContainerRelative {...props}>{children}</StyledContainerRelative>
+  );
+};
 
 export default ContainerRelative;
 

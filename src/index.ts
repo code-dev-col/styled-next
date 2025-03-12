@@ -4,8 +4,10 @@
  * @module index
  * @preferred
  */
+
 /* animated */
 export { default as Marquee } from './components/atomic/atoms/animated/Marquee';
+export { default as Spinner } from './components/atomic/atoms/animated/Spinner';
 
 /* button */
 export { default as Back } from './components/atomic/atoms/button/Back';
@@ -36,6 +38,7 @@ export { default as ImagesContainer } from './components/atomic/atoms/image/Imag
 
 /* link */
 export { default as Anchor } from './components/atomic/atoms/link/Anchor';
+export { default as TransitionLink } from './components/atomic/atoms/link/TransitionLink';
 
 /* list */
 export { default as ListItem } from './components/atomic/atoms/list/ListItem';
@@ -43,13 +46,19 @@ export { default as UnorderedList } from './components/atomic/atoms/list/Unorder
 
 /* structure */
 export { default as Center } from './components/atomic/atoms/structure/Center';
+export { default as Container } from './components/atomic/atoms/structure/Container';
 export { default as ContainerFlex } from './components/atomic/atoms/structure/ContainerFlex';
 export { default as ContainerRelative } from './components/atomic/atoms/structure/ContainerRelative';
 export { default as ContainerAbsolute } from './components/atomic/atoms/structure/ContainerAbsolute';
-export { default as Grid } from './components/atomic/atoms/structure/Grid';
-export { default as Container } from './components/atomic/atoms/structure/Container';
-export { default as ThreeColumns } from './components/atomic/atoms/structure/ThreeColumns';
-export { default as TwoColumns } from './components/atomic/atoms/structure/TwoColumns';
+
+/* grid */
+export { default as Grid } from './components/atomic/atoms/grid/Grid';
+export { default as GridAreas } from './components/atomic/atoms/grid/GridAreas';
+export { default as GridAreasField } from './components/atomic/atoms/grid/GridAreasField';
+
+/* columns */
+export { default as ThreeColumns } from './components/atomic/atoms/columns/ThreeColumns';
+export { default as TwoColumns } from './components/atomic/atoms/columns/TwoColumns';
 
 /* text */
 export { default as SmallText } from './components/atomic/atoms/text/SmallText';
@@ -66,3 +75,4 @@ export { default as useWidth } from './hooks/useWidth';
 /* performance */
 export { default as MemoWrapper } from './components/atomic/atoms/performance/MemoWrapper';
 export { default as LazyLoad } from './components/atomic/molecules/perfomance/LazyLoad';
+

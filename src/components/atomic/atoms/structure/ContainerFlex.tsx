@@ -1,8 +1,10 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { FlexDirection } from '../../interfaces/interfaces-styled';
 import { lighten } from 'polished';
 
 export interface ContainerFlexProps {
+  children?: React.ReactNode;
   $direction?: FlexDirection;
   // Para cambiar la dirección en un breakpoint, se define como un array: [nueva dirección, breakpoint máximo]
   $directionFlexQuery?: [FlexDirection, string];
@@ -31,7 +33,7 @@ export interface ContainerFlexProps {
   $flexBasis?: string;
 }
 
-const ContainerFlex = styled.div<ContainerFlexProps>`
+const StyledContainerFlex = styled.div<ContainerFlexProps>`
   display: flex;
   gap: ${({ $gap }) => $gap || '0.5rem'};
   flex-direction: ${({ $direction }) => $direction ?? 'row'};
@@ -85,6 +87,13 @@ const ContainerFlex = styled.div<ContainerFlexProps>`
     flex-basis: ${({ $flexBasis }) => $flexBasis ?? 'auto'};
   }
 `;
+
+const ContainerFlex: React.FC<ContainerFlexProps> = ({
+  children,
+  ...props
+}) => {
+  return <StyledContainerFlex {...props}>{children}</StyledContainerFlex>;
+};
 
 export default ContainerFlex;
 

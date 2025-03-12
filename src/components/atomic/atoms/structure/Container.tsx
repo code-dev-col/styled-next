@@ -23,7 +23,7 @@ export interface ContainerProps {
 }
 
 const StyledContainer = styled.div<ContainerProps>`
-  position: relative;
+  position: static;
   display: ${({ $display }) => $display || 'block'};
   padding: ${({ $padding }) => $padding || '1rem 0'};
   height: ${({ $height }) => $height || 'auto'};

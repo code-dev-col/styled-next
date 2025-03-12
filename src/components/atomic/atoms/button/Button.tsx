@@ -98,9 +98,12 @@ export const ButtonStyle = css<ButtonProps>`
 `;
 
 const IconWrapper = styled.span<{ $position: 'left' | 'right' }>`
+  display: inline-flex;
   margin-right: ${({ $position }) => ($position === 'left' ? '0.5rem' : '0')};
   margin-left: ${({ $position }) => ($position === 'right' ? '0.5rem' : '0')};
   vertical-align: middle;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledButton = styled.button<ButtonProps>`

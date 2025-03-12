@@ -1,10 +1,8 @@
-'use client';
-
 import React from 'react';
 import Abbr from '../../SEO/abbr/Abbr';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
-import { AiOutlineAppstore } from 'react-icons/ai';
+import { FaChevronLeft } from 'react-icons/fa';
 
 const StyledBackButton = styled.button`
   cursor: pointer;
@@ -40,12 +38,21 @@ const StyledBackButton = styled.button`
 
 export default function Back() {
   const router = useRouter();
+
+  const handleBack = () => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        router.back();
+      });
+    } else {
+      router.back();
+    }
+  };
+
   return (
     <Abbr $title="Regresar">
-      <StyledBackButton
-        onClick={() => router.back()}
-        aria-label="regresar atrás">
-        <AiOutlineAppstore />
+      <StyledBackButton onClick={handleBack} aria-label="regresar atrás">
+        <FaChevronLeft />
       </StyledBackButton>
     </Abbr>
   );

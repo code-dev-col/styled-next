@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Grid from './Grid';
+import Grid from '../grid/Grid';
 
 interface ThreeColumnsProps {
   children: React.ReactNode[];
@@ -41,8 +41,9 @@ const ThreeColumnsGrid = styled(Grid)<{
     `}
 
   /* En pantallas pequeñas, se transforma el layout a columna */
-  @media screen and (width >= 650px) {
-    /* Mantiene el grid de tres columnas en pantallas amplias */
+  @media screen and (max-width: 41.99rem) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
