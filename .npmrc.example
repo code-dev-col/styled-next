@@ -1,0 +1,2 @@
+@code-dev-col:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=TOKEN_TAP_HERE

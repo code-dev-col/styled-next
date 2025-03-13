@@ -1,0 +1,10 @@
+# .npmignore (para GitHub Packages)
+# ==================================
+
+# Ignorar todo
+*
+# Excluir solo lo necesario
+!dist/
+!package.json
+!LICENSE.md
+!README.md
