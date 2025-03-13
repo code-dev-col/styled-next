@@ -3,6 +3,7 @@
 
 # Ignorar todo
 *
+*/node_modules/
 # Excluir solo lo necesario
 !dist/
 !package.json
