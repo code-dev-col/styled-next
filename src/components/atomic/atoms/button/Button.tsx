@@ -6,7 +6,6 @@ import styled, { css, keyframes } from 'styled-components';
 import { lighten } from 'polished'; // Importamos lighten (podrías usar darken si prefieres)
 import DynamicIcon from '../../atoms/icon/DynamicIcon';
 import { ButtonProps } from '../../interfaces/interfaces-styled';
-import { defaultButtonSizes } from '../edited/sizes';
 
 const bounceAnimation = keyframes`
   0% { transform: translateY(0); }
@@ -23,10 +22,10 @@ const bounceAnimation = keyframes`
 export const ButtonStyle = css<ButtonProps>`
   border: ${({ $border, theme }) =>
     $border ? `3px solid ${theme.colors.text}` : 'none'};
-  padding: ${({ $padding, $size }) =>
-    $padding || defaultButtonSizes[$size].padding};
-  border-radius: ${({ $rounded, $size }) =>
-    $rounded ? 'inherit' : defaultButtonSizes[$size].borderRadius};
+  padding: ${({ $padding, $size, theme }) =>
+    $padding ?? theme.sizes.button[$size].padding};
+  border-radius: ${({ $rounded, $size, theme }) =>
+    $rounded ? 'inherit' : theme.sizes.button[$size].borderRadius};
   cursor: pointer;
   text-decoration: none;
   font-weight: 500;
@@ -34,7 +33,7 @@ export const ButtonStyle = css<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${({ $size }) => defaultButtonSizes[$size].fontSize};
+  font-size: ${({ $size, theme }) => theme.sizes.button[$size].fontSize};
 
   ${({ $block }) =>
     $block &&
@@ -166,7 +165,3 @@ export default function Button({
     </StyledButton>
   );
 }
-
-
-
-
