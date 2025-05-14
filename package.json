@@ -1,6 +1,6 @@
 {
   "name": "@code-dev-col/styled-next",
-  "version": "0.0.1-alpha-v1.3",
+  "version": "0.0.1-alpha-v1.4",
   "files": [
     "dist"
   ],
@@ -39,4 +39,3 @@
     "react-icons": "5.4.0"
   }
 }
-
