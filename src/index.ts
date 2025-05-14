@@ -76,3 +76,5 @@ export { default as useWidth } from './hooks/useWidth';
 export { default as MemoWrapper } from './components/atomic/atoms/performance/MemoWrapper';
 export { default as LazyLoad } from './components/atomic/molecules/perfomance/LazyLoad';
 
+/* edited */
+export { defaultButtonSizes, type ButtonSizeDef } from './components/atomic/atoms/edited/sizes';

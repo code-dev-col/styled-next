@@ -5,15 +5,8 @@ import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { lighten } from 'polished'; // Importamos lighten (podrías usar darken si prefieres)
 import DynamicIcon from '../../atoms/icon/DynamicIcon';
-import { ButtonProps, Size } from '../../interfaces/interfaces-styled';
-
-const buttonSizeStyles: {
-  [key in Size]: { fontSize: string; padding: string; borderRadius: string };
-} = {
-  s: { fontSize: '0.8rem', padding: '0.25rem 1rem', borderRadius: '0.5rem' },
-  m: { fontSize: '1rem', padding: '0.5rem 1.5rem', borderRadius: '1rem' },
-  l: { fontSize: '1.2rem', padding: '1rem 2rem', borderRadius: '1.5rem' },
-};
+import { ButtonProps } from '../../interfaces/interfaces-styled';
+import { defaultButtonSizes } from '../edited/sizes';
 
 const bounceAnimation = keyframes`
   0% { transform: translateY(0); }
@@ -31,9 +24,9 @@ export const ButtonStyle = css<ButtonProps>`
   border: ${({ $border, theme }) =>
     $border ? `3px solid ${theme.colors.text}` : 'none'};
   padding: ${({ $padding, $size }) =>
-    $padding || buttonSizeStyles[$size].padding};
+    $padding || defaultButtonSizes[$size].padding};
   border-radius: ${({ $rounded, $size }) =>
-    $rounded ? 'inherit' : buttonSizeStyles[$size].borderRadius};
+    $rounded ? 'inherit' : defaultButtonSizes[$size].borderRadius};
   cursor: pointer;
   text-decoration: none;
   font-weight: 500;
@@ -41,7 +34,7 @@ export const ButtonStyle = css<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${({ $size }) => buttonSizeStyles[$size].fontSize};
+  font-size: ${({ $size }) => defaultButtonSizes[$size].fontSize};
 
   ${({ $block }) =>
     $block &&
@@ -173,4 +166,7 @@ export default function Button({
     </StyledButton>
   );
 }
+
+
+
 
